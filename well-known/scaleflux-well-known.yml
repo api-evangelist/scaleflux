@@ -1,0 +1,46 @@
+generated: '2026-08-02'
+method: probed
+host: https://scaleflux.com
+note: >-
+  INCONCLUSIVE, NOT ABSENT. scaleflux.com sits behind a SiteDistrict WAF that
+  returns HTTP 403 "Access Denied" to every automated request — including the
+  site root, /robots.txt and /sitemap.xml — regardless of User-Agent. No
+  /.well-known/ document could therefore be confirmed present or absent. No
+  WellKnown, SecurityTxt or AgentCard pointer is wired into apis.yml, because
+  nothing was actually retrieved. Re-probe on a later round.
+blocked_by:
+  server: sitedistrict-nginx
+  response: 403 Access Denied
+  applies_to_all_paths: true
+documents:
+- path: /.well-known/security.txt
+  status: 403
+- path: /.well-known/openid-configuration
+  status: 403
+- path: /.well-known/oauth-authorization-server
+  status: 403
+- path: /.well-known/api-catalog
+  status: 403
+- path: /.well-known/ai-plugin.json
+  status: 403
+- path: /.well-known/agent-card.json
+  status: 403
+- path: /.well-known/agent.json
+  status: 403
+- path: /openapi.json
+  status: 403
+- path: /llms.txt
+  status: 403
+- path: /robots.txt
+  status: 403
+- path: /sitemap.xml
+  status: 403
+also_probed:
+- host: https://www.scaleflux.com
+  paths: [/, /.well-known/security.txt]
+  status: 403
+x-evidence:
+  fetched: '2026-08-02'
+  method: curl HTTP/2, browser and default User-Agents
+  http_status: 403
+  content_type: text/html

@@ -1,0 +1,72 @@
+generated: '2026-08-02'
+method: searched
+source: https://packagecloud.io/scaleflux
+note: >-
+  ScaleFlux is a hardware vendor and publishes no web API, so there are no
+  first-party API client SDKs. What it does distribute publicly are Linux kernel
+  driver packages and the vendor NVMe management utility. These are system
+  packages, not API client libraries — no `SDKs` pointer is emitted in apis.yml
+  because no SDK exists.
+registries_probed:
+- registry: npm
+  query: scaleflux
+  results: 0
+  url: https://registry.npmjs.org/-/v1/search?text=scaleflux
+- registry: pypi
+  query: scaleflux
+  results: 0
+  http_status: 404
+  url: https://pypi.org/pypi/scaleflux/json
+- registry: crates.io
+  query: scaleflux
+  results: 0
+  url: https://crates.io/api/v1/crates?q=scaleflux
+- registry: packagecloud
+  query: scaleflux
+  results: 2
+  url: https://packagecloud.io/scaleflux
+packages:
+- language: c
+  kind: kernel-driver
+  registry: packagecloud
+  name: sfx3xdriver
+  repository: scaleflux/gds
+  url: https://packagecloud.io/scaleflux/gds
+  http_status: 200
+  formats: [rpm, deb]
+  variants:
+  - sfx3xdriver-src-dkms
+  - sfx3xdriver-src
+  - sfx3xdriver-<kernel-version>
+  description: >-
+    ScaleFlux SFX 3x-series NVMe device driver, published as DKMS source and
+    prebuilt per-kernel packages for RHEL/CentOS (el7, el8) and Ubuntu. Ships
+    the sfx-nvme management utility alongside the kernel module.
+  official: true
+- language: c
+  kind: kernel-driver
+  registry: packagecloud
+  name: sfx3xdriver
+  repository: scaleflux/poc
+  url: https://packagecloud.io/scaleflux/poc
+  http_status: 200
+  formats: [rpm, deb]
+  variants:
+  - sfx3xdriver-src
+  - sfx3xdriver-<kernel-version>
+  description: >-
+    Proof-of-concept / evaluation channel of the same SFX 3x-series driver
+    packages.
+  official: true
+- language: c
+  kind: cli-plugin
+  registry: source
+  name: nvme-cli sfx plugin (sfx-nvme)
+  url: https://github.com/linux-nvme/nvme-cli/tree/master/plugins/scaleflux
+  description: >-
+    ScaleFlux vendor-specific extensions to the upstream nvme-cli tool. Merged
+    into linux-nvme/nvme-cli, so `nvme sfx <command>` is available from any
+    distribution nvme-cli build. Command surface captured in
+    cli/scaleflux-cli.yml.
+  official: true
+  upstream: linux-nvme/nvme-cli

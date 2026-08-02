@@ -1,0 +1,45 @@
+generated: '2026-08-02'
+method: searched
+source: https://github.com/linux-nvme/nvme-cli/tree/master/plugins/scaleflux
+note: >-
+  ScaleFlux publishes no web API, so the usual API-layer standards (OAuth 2.0,
+  OIDC, RFC 9457, JSON:API, OData) are not applicable rather than failed. The
+  standards it does conform to are storage/interconnect device standards. No
+  published certification or compliance program (SOC 2, ISO 27001, PCI, HIPAA,
+  FedRAMP) was found, so no `Compliance` pointer is emitted.
+standards:
+- id: nvme
+  name: NVM Express
+  conforms: true
+  evidence: >-
+    ScaleFlux drives are documented as operating with standard NVMe commands and
+    requiring no proprietary driver for baseline function; the vendor extensions
+    are implemented as an NVMe vendor-specific command plugin upstreamed to
+    linux-nvme/nvme-cli.
+  source: https://github.com/linux-nvme/nvme-cli/tree/master/plugins/scaleflux
+- id: nvme-vendor-specific-commands
+  name: NVMe vendor-specific command set (sfx)
+  conforms: true
+  evidence: plugins/scaleflux/sfx-nvme.h declares a 10-command vendor plugin
+  source: cli/scaleflux-cli.yml
+- id: pcie
+  name: PCI Express
+  conforms: true
+  evidence: >-
+    FX 5016 controller and CSD 5000 series are marketed as PCIe 5.0 devices;
+    earlier SFX 3016 / CSD 3000 as PCIe 4.0.
+  source: https://scaleflux.com/products/
+- id: cxl
+  name: Compute Express Link
+  conforms: true
+  evidence: ScaleFlux ships CXL memory expansion silicon as a product line
+  source: https://scaleflux.com/
+- id: oauth2
+  conforms: false
+  evidence: no web API surface
+- id: openapi
+  conforms: false
+  evidence: no OpenAPI published; see x-contract-discovery in this repo's README
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: no HTTP API surface

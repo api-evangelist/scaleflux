@@ -1,17 +1,42 @@
 aid: scaleflux
 name: ScaleFlux
-description: 'ScaleFlux is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'ScaleFlux is a semiconductor and systems company, founded in 2014 and
+  headquartered in Milpitas / San Jose, California, that designs enterprise NVMe SSD
+  controllers, computational storage drives and CXL memory products. Its FX-series
+  SoC controllers (SFX 3016, FX 5016) embed transparent hardware compression, so drives
+  such as the CSD 2000, CSD 3000 and CSD 5000 series present substantially more logical
+  than physical capacity while offloading compression and data-shaping work from the
+  host CPU. The company also ships non-compressing NSD drives and CXL memory expansion
+  silicon aimed at AI, cloud and database infrastructure. ScaleFlux is a hardware vendor
+  rather than a web-API provider: it publishes no public REST, GraphQL or webhook API.
+  Its programmable surface is the NVMe standard command set plus the vendor-specific
+  "sfx" extensions shipped as an upstream plugin in linux-nvme/nvme-cli (sfx-nvme),
+  together with kernel driver and utility packages distributed through packagecloud.io.'
 url: https://raw.githubusercontent.com/api-evangelist/scaleflux/refs/heads/main/apis.yml
+image: https://kinlane-productions2.s3.amazonaws.com/api-evangelist-site/api-evangelist-logo.png
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment pipeline local-v1
 specificationVersion: '0.20'
 created: '2026-08-02'
 modified: '2026-08-02'
+x-enrichment:
+  date: '2026-08-02'
+  status: enriched
+  artifacts_added: 6
+  pass: local-v1
 tags:
 - Company
+- Storage
+- Hardware
+- Semiconductors
+- Computational Storage
+- NVMe
+- SSD
+- CXL
+- Data Center
+- Infrastructure
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +44,37 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/scaleflux-domain-security.yml
+- type: Packages
+  url: packages/scaleflux-packages.yml
+- type: CLI
+  url: cli/scaleflux-cli.yml
+- type: Conformance
+  url: conformance/scaleflux-conformance.yml
+- type: LLMsTxt
+  url: llms/scaleflux-llms.txt
 - type: Website
+  url: https://scaleflux.com/
+- type: Products
+  url: https://scaleflux.com/products/
+- type: Blog
+  url: https://scaleflux.com/category/blog/
+- type: News
+  url: https://scaleflux.com/about/news/
+- type: Resources
+  url: https://scaleflux.com/resources/
+- type: FAQ
+  url: https://scaleflux.com/faqs/
+- type: Support
+  url: https://scaleflux.com/contact-us/
+- type: Partners
+  url: https://scaleflux.com/partners/
+- type: Careers
+  url: https://scaleflux.com/about/careers/
+- type: PrivacyPolicy
+  url: https://scaleflux.com/privacy-policy/
+- type: About
+  url: https://scaleflux.com/about/
+- type: SecondaryMarket
   url: https://forgeglobal.com/scaleflux_stock/

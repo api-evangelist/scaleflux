@@ -1,0 +1,80 @@
+generated: '2026-08-02'
+method: searched
+source: https://github.com/linux-nvme/nvme-cli/blob/master/plugins/scaleflux/sfx-nvme.h
+name: sfx-nvme
+summary: >-
+  ScaleFlux's programmable management surface is the NVMe command set plus a set
+  of vendor-specific extensions. Those extensions are published upstream as the
+  `sfx` plugin in linux-nvme/nvme-cli, so they are invoked as `nvme sfx <command>`
+  (or via the standalone `/usr/bin/sfx-nvme` binary bundled with the ScaleFlux
+  driver packages). The command list below is transcribed verbatim from the
+  plugin's COMMAND_LIST declaration in sfx-nvme.h.
+invocation:
+- form: nvme sfx <command> <device>
+  provided_by: linux-nvme/nvme-cli (upstream, ScaleFlux-contributed plugin)
+- form: sfx-nvme <command> <device>
+  provided_by: ScaleFlux driver packages (/usr/bin/sfx-nvme)
+  packages: packages/scaleflux-packages.yml
+install:
+- method: distro package
+  detail: nvme-cli ships the sfx plugin in mainstream distributions
+- method: packagecloud
+  detail: ScaleFlux sfx3xdriver packages install sfx-nvme and companion utilities
+  url: https://packagecloud.io/scaleflux/gds
+plugin:
+  name: sfx
+  description: ScaleFlux vendor specific extensions
+  source_file: plugins/scaleflux/sfx-nvme.h
+  license: GPL-2.0-or-later
+commands:
+- name: smart-log-add
+  description: Retrieve ScaleFlux SMART Log, show it
+  handler: get_additional_smart_log
+  group: telemetry
+- name: lat-stats
+  description: Retrieve ScaleFlux IO Latency Statistics log, show it
+  handler: get_lat_stats_log
+  group: telemetry
+- name: get-bad-block
+  description: Retrieve bad block table of block device, show it
+  handler: sfx_get_bad_block
+  group: health
+- name: query-cap
+  description: Query current capacity info
+  handler: query_cap_info
+  group: capacity
+- name: change-cap
+  description: Dynamic change capacity
+  handler: change_cap
+  group: capacity
+- name: expand-cap
+  description: expand the last namespace capacity lossless
+  handler: sfx_expand_cap
+  group: capacity
+- name: set-feature
+  description: Set a feature
+  handler: sfx_set_feature
+  group: configuration
+- name: get-feature
+  description: Get a feature
+  handler: sfx_get_feature
+  group: configuration
+- name: dump-evtlog
+  description: dump evtlog into file and parse warning & error log
+  handler: sfx_dump_evtlog
+  group: diagnostics
+- name: status
+  description: Retrieve the ScaleFlux status output, show it
+  handler: sfx_status
+  group: telemetry
+companion_utilities:
+  note: >-
+    ScaleFlux driver packages are documented as also installing sfx-status,
+    sfx-fwdownload, sfx-fsb and sfx-filesize alongside sfx-nvme. Only sfx-nvme's
+    command surface is captured verbatim here; the others are named in vendor
+    docs but their flag surface was not retrievable (scaleflux.com returns HTTP
+    403 to automated clients — see well-known/scaleflux-well-known.yml).
+x-evidence:
+  fetched: '2026-08-02'
+  url: https://raw.githubusercontent.com/linux-nvme/nvme-cli/master/plugins/scaleflux/sfx-nvme.h
+  http_status: 200
