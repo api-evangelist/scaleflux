@@ -1,0 +1,11 @@
+{
+  "repo": "scaleflux",
+  "feeds": [
+    {
+      "source": "https://scaleflux.com/products/",
+      "error": "HTTPError"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-08-06T14:08:46Z"
+}
