@@ -35,6 +35,17 @@ tags:
 - NVMe
 - SSD
 - CXL
+- Data-Center
+- Infrastructure
+tags_raw:
+- Company
+- Storage
+- Hardware
+- Semiconductors
+- Computational Storage
+- NVMe
+- SSD
+- CXL
 - Data Center
 - Infrastructure
 apis: []
