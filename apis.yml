@@ -13,6 +13,17 @@ description: 'ScaleFlux is a semiconductor and systems company, founded in 2014 
   "sfx" extensions shipped as an upstream plugin in linux-nvme/nvme-cli (sfx-nvme),
   together with kernel driver and utility packages distributed through packagecloud.io.'
 url: https://raw.githubusercontent.com/api-evangelist/scaleflux/refs/heads/main/apis.yml
+deliveryModel:
+  model: library
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Library · distributed through package registries, no callable service
+  confidence: low
+  source:
+  - none
+  generated: '2026-08-28'
+  method: derived
 image: https://kinlane-productions2.s3.amazonaws.com/api-evangelist-site/api-evangelist-logo.png
 x-type: company
 x-source: harvest:secondary-market
